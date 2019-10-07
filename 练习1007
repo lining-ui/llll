@@ -1,0 +1,251 @@
+
+
+```python
+tup = 4,5,6
+print(tup)
+
+tup = (4,5,6) + (7,2,77,[1,2,3,4,5]) + ('huji','oib')
+print(tup)
+
+tup[6].append(54)
+
+print(tup)
+
+tup2 = tup * 4
+
+print(tup2)
+```
+
+    (4, 5, 6)
+    (4, 5, 6, 7, 2, 77, [1, 2, 3, 4, 5], 'huji', 'oib')
+    (4, 5, 6, 7, 2, 77, [1, 2, 3, 4, 5, 54], 'huji', 'oib')
+    (4, 5, 6, 7, 2, 77, [1, 2, 3, 4, 5, 54], 'huji', 'oib', 4, 5, 6, 7, 2, 77, [1, 2, 3, 4, 5, 54], 'huji', 'oib', 4, 5, 6, 7, 2, 77, [1, 2, 3, 4, 5, 54], 'huji', 'oib', 4, 5, 6, 7, 2, 77, [1, 2, 3, 4, 5, 54], 'huji', 'oib')
+
+
+
+```python
+tup = 2,3,4
+a, b, c = tup
+print(a)
+print(b)
+print(c)
+```
+
+    2
+    3
+    4
+
+
+
+```python
+print('{0}是个好仔，她最{1}'.format('lining','机灵'))
+```
+
+    lining是个好仔，她最机灵
+
+
+
+```python
+sep = [(1,2,3), (4,5,6), (7,8,9), (12,35,67)]
+for a, b, c in sep:
+    print(a)
+    print(b)
+    print(c)
+    print('{0},{1},{2} 在元组中'.format(a, b, c))
+```
+
+    1
+    2
+    3
+    1,2,3 在元组中
+    4
+    5
+    6
+    4,5,6 在元组中
+    7
+    8
+    9
+    7,8,9 在元组中
+    12
+    35
+    67
+    12,35,67 在元组中
+
+
+
+```python
+lit = ['56t', 'kijh', 'ijknmh', 'oj', '00000000']
+
+lit.sort(key = len)
+
+print(lit)
+
+lit[::-1]#将step设置为-1，将列表翻转
+
+print(lit)
+```
+
+    ['oj', '56t', 'kijh', 'ijknmh', '00000000']
+    ['oj', '56t', 'kijh', 'ijknmh', '00000000']
+
+
+
+```python
+abc_list = ['a', 'b', 'c', 'd']
+dict1 = {}
+
+for index1, value1 in enumerate(abc_list):
+    dict1[index1] = value1
+
+dict1
+```
+
+
+
+
+    {0: 'a', 1: 'b', 2: 'c', 3: 'd'}
+
+
+
+
+```python
+a = ['a', 'b', 'c', 'd']
+b = ['lily', 'mike', 'bobo', 'coco', 'dafu']
+dict2 = {}
+
+for index1, (a, b) in enumerate(zip(a, b)):
+    dict2[index1] = (a, b)
+
+dict2
+```
+
+
+
+
+    {0: ('a', 'lily'), 1: ('b', 'mike'), 2: ('c', 'bobo'), 3: ('d', 'coco')}
+
+
+
+
+```python
+a = ['a', 'b', 'c', 'd']
+b = ['lily', 'mike', 'bobo', 'coco', 'dafu']
+
+ab = zip(a, b)
+
+a, b = zip(*ab)
+
+print(a)
+```
+
+    ('a', 'b', 'c', 'd')
+
+
+
+```python
+a = ['a', 'b', 'c', 'd', 'e']
+b = ['lily', 'mike', 'bobo', 'coco', 'dafu']
+dict4 = dict(zip(a, b))
+
+#或者是这样：
+# dict4 = {}
+# for key, value in zip(a, b):
+#     dict4[key] = value
+
+dict4
+```
+
+
+
+
+    {'a': 'lily', 'b': 'mike', 'c': 'bobo', 'd': 'coco', 'e': 'dafu'}
+
+
+
+
+```python
+dict5 = dict(zip(range(1,5), reversed(range(12,16))))
+dict5
+```
+
+
+
+
+    {1: 15, 2: 14, 3: 13, 4: 12}
+
+
+
+
+```python
+word = ['boy', 'bu', 'as', 'awww', 'buu', 'awqw', 'app']
+list_a = []
+list_b = []
+
+for i in word:
+    if i[0] == 'a':
+        list_a.append(i)
+    elif i[0] == 'b':
+        list_b.append(i)
+
+list_letter = list('a' * len(list_a) + 'b' * len(list_b))
+list_word = list_a + list_b
+
+list_all = list(zip(list_letter, list_word))
+
+print(list_all)
+```
+
+    [('a', 'as'), ('a', 'awww'), ('a', 'awqw'), ('a', 'app'), ('b', 'boy'), ('b', 'bu'), ('b', 'buu')]
+
+
+
+```python
+word = ['boy', 'bu', 'as', 'awww', 'buu', 'awqw', 'app']
+dict_word = {}
+
+for i in word:
+    letter = i[0]
+    if letter not in dict_word.keys():
+        dict_word.update({letter:[]})
+        dict_word[letter].append(i)
+    elif letter in dict_word.keys():
+        dict_word[letter].append(i)
+        
+#第二种方法，利用setdefault函数
+
+for i in word:
+    letter = i[0]
+    dict_word.setdefault(letter, [])
+    dict_word[letter].append(i)
+
+dict_word
+```
+
+
+
+
+    {'b': ['buu'], 'a': ['app']}
+
+
+
+
+```python
+from collections import defaultdict
+
+word = ['boy', 'bu', 'as', 'awww', 'buu', 'awqw', 'app']
+
+dict_de = defaultdict(list) # 在访问一个不存在的key时，默认字典会提供一个默认值value为list
+
+for i in word:
+    dict_de[i[0]].append(i)
+
+print(dict_de)
+```
+
+    defaultdict(<class 'list'>, {'b': ['boy', 'bu', 'buu'], 'a': ['as', 'awww', 'awqw', 'app']})
+
+
+
+```python
+
+```
